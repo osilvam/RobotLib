@@ -4,10 +4,10 @@ if ! [ $(ls -d ../*/ | grep V-REP) ]
 	if [ $(arch) == "x86_64" ]
 		then
 		echo "Downloading V-REP 64 bits simulator"
-		#sudo -u $SUDO_USER wget 'http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_64_Linux.tar.gz'
+		sudo -u $SUDO_USER wget 'http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_64_Linux.tar.gz'
 	else
 		echo "Downloading V-REP 32 bits simulator"
-		#sudo -u $SUDO_USER 'wget http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_Linux.tar.gz'
+		sudo -u $SUDO_USER 'wget http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_Linux.tar.gz'
 	fi
 	CFILE=$(ls | grep *.tar.gz)
 	V1="tar xzvf $CFILE"
