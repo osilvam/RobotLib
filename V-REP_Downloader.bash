@@ -4,13 +4,19 @@ if ! [ $(ls -d ../*/ | grep V-REP) ]
 	if [ $(arch) == "x86_64" ]
 		then
 		echo "Downloading V-REP 64 bits simulator"
-		sudo -u $SUDO_USER wget 'http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_64_Linux.tar.gz'
+		#sudo -u $SUDO_USER wget 'http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_64_Linux.tar.gz'
 	else
 		echo "Downloading V-REP 32 bits simulator"
-		sudo -u $SUDO_USER 'wget http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_Linux.tar.gz'
+		#sudo -u $SUDO_USER 'wget http://coppeliarobotics.com/V-REP_PRO_EDU_V3_3_1_Linux.tar.gz'
 	fi
-	sudo -u $SUDO_USER 'tar xzvf V-REP*.tar.gz'
-	sudo -u $SUDO_USER 'rm -f V-REP*.tar.gz'
+	CFILE=$(ls | grep *.tar.gz)
+	V1="tar xzvf $CFILE"
+	V2="rm -f $CFILE"
+	sudo -u $SUDO_USER $V1
+	sudo -u $SUDO_USER $V2	
+	V3="cp ./RobotLib/RobotVREP/vrepAddOnScript_screenRecorder.lua ${CFILE%%.*}"
+	echo "$V3"
+	sudo -u $SUDO_USER $V3
 	cd RobotLib
 else
 	echo "VREP is already downloaded"
