@@ -2,8 +2,6 @@ LDFLAGS = -lpthread
 
 EXT_OBJS = ./robotObjects/objects/VisionSensor.o ./robotObjects/objects/Joint.o ./robotObjects/objects/CollisionObject.o ./robotObjects/objects/Object.o ./RobotVREP/objects/RobotVREP.o ./DynamixelMotors/objects/cm700.o ./DynamixelMotors/objects/serial.o ./DynamixelMotors/objects/dynamixel.o . /DynamixelMotors/objects/dxl_hal.o /DynamixelMotors/objects/usb2dynamixel.o
 
-
-
 ROBOTOBJECTS_ODIR=robotObjects/objects
 _ROBOTOBJECTS_OBJS = VisionSensor.o Joint.o CollisionObject.o Object.o 
 ROBOTOBJECTS_OBJS = $(patsubst %,$(ROBOTOBJECTS_ODIR)/%,$(_ROBOTOBJECTS_OBJS))
@@ -47,6 +45,7 @@ install:
 	@cp ROBOTLIB /usr/include
 	@chmod go+r /usr/include/ROBOTLIB_headers/*
 	@chmod go+r /usr/include/ROBOTLIB
+	@bash V-REP_Downloader.bash
 
 docs:
 	@mkdir -p doc
