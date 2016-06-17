@@ -189,7 +189,7 @@ public:
 	 * \param operationMode A remote API function operation mode. Recommended operation modes for this function are simx_opmode_streaming (the first call) and simx_opmode_buffer (the following calls, assigned as default).
 	 * \return Vector that contains the object orientation in Euler angles (alpha, beta and gamma).
 	 */
-	vector < double > getObjectOrientation(Object * object, int relativeTo, simxInt operationMode = /*simx_opmode_buffer*/ 0x060000);
+	vector < double > getObjectOrientation(Object * object, int relativeTo = -1, simxInt operationMode = /*simx_opmode_buffer*/ 0x060000);
 
 	/**
 	 * \brief Retrieves the intrinsic position of a joint.
