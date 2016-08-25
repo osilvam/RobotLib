@@ -74,6 +74,7 @@ Joint::~Joint()
 void Joint::setInitialValues()
 {
 	positions[2] = positions[1] = positions[0] = initial_position;
+	
 	pass_slope_sign = 1;
 	next_slope_sign = 1;
 	joint_change_direction = false;
