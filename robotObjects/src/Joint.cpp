@@ -38,8 +38,8 @@ Joint::Joint(const char * unit, const char name[], double max_value, double min_
 	this->max_value = max_value;
 	this->min_value = min_value;
 	this->initial_position = initial_position;
-	positions[0] = initial_position;
-	
+
+	positions[2] = positions[1] = positions[0] = initial_position;	
 	pass_slope_sign = 1;
 	next_slope_sign = 1;
 	joint_change_direction = false;
@@ -73,6 +73,7 @@ Joint::~Joint()
 
 void Joint::setInitialValues()
 {
+	positions[2] = positions[1] = positions[0] = initial_position;
 	pass_slope_sign = 1;
 	next_slope_sign = 1;
 	joint_change_direction = false;
