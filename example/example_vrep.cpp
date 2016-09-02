@@ -2,7 +2,7 @@
 
 int main(int argc, char* argv[])
 {	
-	RobotVREP vrep(false);
+	RobotVREP vrep(true);
 
 	Joint * joint = new Joint((char*)"DEG",(char*)"joint");
 	CollisionObject * cylinder = new CollisionObject((char*)"Collision");
@@ -12,6 +12,10 @@ int main(int argc, char* argv[])
 
 	double vel = 0.0;
 	int notCollision = 0;
+
+	vrep.changeVideoName((char*)"example");
+
+	vrep.setJointTargetVelocity(joint, vel);
 	
 	vrep.startSimulation(simx_opmode_oneshot_wait);
 
