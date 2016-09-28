@@ -426,7 +426,7 @@ bool RobotVREP::readCollision(vector < CollisionObject * > collisionObjects, sim
 		int collisionState = (int)*aux;
 		bool boolCollisionState = false;
 
-		if(collisionState != 0)
+		if(!(collisionState == 0))
 		{
 			boolCollisionState = true;
 			FinalCollisionState = true;
