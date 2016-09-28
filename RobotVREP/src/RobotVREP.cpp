@@ -408,6 +408,38 @@ bool RobotVREP::readCollision(CollisionObject * collisionObject, simxInt operati
 	return boolCollisionState;
 }
 
+bool RobotVREP::readCollision(vector < CollisionObject * > collisionObjects, simxInt operationMode)
+{
+	bool FinalCollisionState = false;
+
+	for(int i = 0; i < (int)collisionObjects.size(); i++)
+	{
+		int uniqueID = collisionObjects.at(i)->getUniqueObjectId();
+		int vrepHandlerVectorPosition =collisionObjectIdToVrepHandler_map.at ( uniqueID );
+		int * handler = VrepHandlerVector.at( vrepHandlerVectorPosition );
+
+		unsigned char * aux = new unsigned char[100];
+
+		int error = simxReadCollision(clientID, *handler, aux, operationMode);
+		if(error != 0) vrep_error << "simxReadCollision - " << *handler << " : " << error << endl;	
+
+		int collisionState = (int)*aux;
+		bool boolCollisionState = false;
+
+		if(collisionState != 0)
+		{
+			boolCollisionState = true;
+			FinalCollisionState = true;
+		}
+
+		delete[] aux;
+
+		collisionObjects.at(i)->setCollisionState(boolCollisionState);
+	}	
+
+	return FinalCollisionState;
+}
+
 vector < int > RobotVREP::getVisionSensorResolution(VisionSensor * visionSensor, simxInt operationMode)
 {
 	int uniqueID = visionSensor->getUniqueObjectId();

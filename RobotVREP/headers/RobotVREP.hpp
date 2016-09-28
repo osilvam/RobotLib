@@ -236,7 +236,15 @@ public:
 	 * \param collisionState A pointer to a value receiving the collision state (0: not colliding).
 	 * \param operationMode A remote API function operation mode. Recommended operation modes for this function are simx_opmode_streaming (the first call) and simx_opmode_buffer (the following calls, assigned as default).
 	 */
-	bool readCollision(CollisionObject * collisionObject, simxInt operationMode = /*simx_opmode_buffer*/ 0x060000);	
+	bool readCollision(CollisionObject * collisionObject, simxInt operationMode = /*simx_opmode_buffer*/ 0x060000);
+
+	/**
+	 * \brief Reads the collision state of a registered collision object.
+	 * \param collisionHandle Handle of the collision object.
+	 * \param collisionState A pointer to a value receiving the collision state (0: not colliding).
+	 * \param operationMode A remote API function operation mode. Recommended operation modes for this function are simx_opmode_streaming (the first call) and simx_opmode_buffer (the following calls, assigned as default).
+	 */
+	bool readCollision(vector < CollisionObject * > collisionObjects, simxInt operationMode = /*simx_opmode_buffer*/ 0x060000);	
 
 	/**
 	 * \brief Retrieves the resolution of the image of a vision sensor.

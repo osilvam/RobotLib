@@ -50,3 +50,7 @@ install:
 docs:
 	@mkdir -p doc
 	@doxygen ROBOTLIB_doxyfile 
+	@cp -r latex ./doc
+	@rm -rf latex
+	@cp -r html ./doc
+	@rm -rf html
