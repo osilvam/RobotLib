@@ -1,5 +1,5 @@
 CC = gcc
-CXX = g++
+CXX = g++ -std=c++11
 VPATH = ./src ./headers ./include ./remoteApi ../robotObjects/src ../robotObjects/headers ../DynamixelMotors/src ../DynamixelMotors/headers 
 CFLAGS = -fPIC -I./remoteApi -I./include -I./headers -I../robotObjects/headers -DNON_MATLAB_PARSING -DMAX_EXT_API_CONNECTIONS=255
 CFLAGS_EXT = -g -Wall -I./src -I./headers 

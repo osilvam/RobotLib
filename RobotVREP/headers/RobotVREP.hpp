@@ -89,6 +89,8 @@ public:
 	 */
 	RobotVREP(bool video_recording = false, int port = PORTNB, const char * ip = "127.0.0.1");
 
+	RobotVREP();
+
 	/**
 	 * \brief Destructor. Ends the communication thread.
 	 */

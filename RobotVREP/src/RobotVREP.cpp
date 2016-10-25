@@ -129,6 +129,11 @@ RobotVREP::RobotVREP(bool video_recording, int port, const char * ip)
 	setVideoRecordingMode(video_recording);	
 }
 
+RobotVREP::RobotVREP() : RobotVREP(false, PORTNB, "127.0.0.1")
+{
+	
+}
+
 RobotVREP::~RobotVREP()
 {
 	if (video_recording_flag) 
